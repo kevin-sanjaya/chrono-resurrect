@@ -1,6 +1,10 @@
-public class Main {
+import java.awt.*;
 
+public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        EventQueue.invokeLater(() -> {
+            Frame frame = new Frame();
+            frame.setVisible(true);
+        });
     }
 }
