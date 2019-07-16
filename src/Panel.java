@@ -8,9 +8,10 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class Panel extends JPanel implements ActionListener {
+    private static Panel panel = null;
     private static Clovis clovis = new Clovis();
     private Timer timer;
-    private final int DELAY = 10;
+    private final int DELAY = 150;
     int x = 0;
 
     public Panel() {
@@ -19,6 +20,13 @@ public class Panel extends JPanel implements ActionListener {
         setOpaque(false);
         timer = new Timer(DELAY, this);
         timer.start();
+    }
+
+    public static Panel getPanel() {
+        if(panel == null)
+            panel = new Panel();
+
+        return panel;
     }
 
     @Override
