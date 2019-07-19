@@ -1,4 +1,5 @@
-import character.Clovis;
+import character.Crono;
+import util.MapBackground;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,10 +10,8 @@ import java.awt.event.KeyEvent;
 
 public class Panel extends JPanel implements ActionListener {
     private static Panel panel = null;
-    private static Clovis clovis = new Clovis();
     private Timer timer;
-    private final int DELAY = 150;
-    int x = 0;
+    private final int DELAY = 10;
 
     public Panel() {
         addKeyListener(new TAdapter());
@@ -36,21 +35,25 @@ public class Panel extends JPanel implements ActionListener {
 
     @Override
     public void paintComponent(Graphics g) {
-        g.drawImage(clovis.getSprite(),
-                clovis.getX(), clovis.getY(),
-                clovis.getDx(), clovis.getDy(),
-                x, 0,
-                x + 32, 50, null);
-        x += 32;
-
-        if (x >= 120)
-            x=0;
+        g.drawImage(MapBackground.getMapBackground().getSprite(),
+                0,0,
+                1000, 800,
+                null);
+        g.drawImage(Crono.getCrono().getSprite(),
+                Crono.getCrono().getX(),Crono.getCrono().getY(),
+                null);
+        System.out.println(Crono.getCrono().getX() + " " + Crono.getCrono().getY());
     }
 
     private class TAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
-            clovis.keyPressed(e);
+            Crono.getCrono().keyPressed(e);
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            Crono.getCrono().keyReleased(e);
         }
     }
 }

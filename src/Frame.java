@@ -5,8 +5,8 @@ public class Frame extends JFrame {
 
     public Frame() {
         add(Panel.getPanel());
-        setSize(1200, 800);
-        setTitle("Project Clovis");
+        setSize(1000, 800);
+        setTitle("Chrono Trigger");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
